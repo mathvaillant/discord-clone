@@ -1,0 +1,86 @@
+$BGcolor:  #2f3135;
+$green: #4fb185;
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  flex: 0.25;
+  height: 100vh;
+  background-color: $BGcolor;
+  .sidebar__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: $BGcolor;
+    color: #fff;
+    border-bottom: 3px solid #26282c;
+  }
+
+  .sidebar__channels {
+    flex: 1;
+    .sidebar__channelsHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: $BGcolor;
+        color: gray;
+      .sidebar__header {
+        display: flex;
+        align-items: center;
+        .sidebar__addChannelBtn {
+          cursor: pointer;
+          &:hover {
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  .sidebar__voice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: grey;
+    background-color: $BGcolor;
+    padding: 10px;
+    border-top: 1px solid grey;
+    .sidebar__voiceIcon {
+      padding: 10px;
+      color: $green;
+    }
+    .sidebar__voiceInfo {
+      flex: 1;
+      h3 {
+        color: $green;
+      }
+      p {
+        font-size: smaller;
+      }
+    }
+    .sidebar__voiceIcons {
+      display: flex;
+      flex-direction: column;
+      .MuiSvgIcon-root {
+        padding: 10px;
+      }
+    }
+  }
+
+  .sidebar__profile {
+    @extend .sidebar__voice;
+    .sidebar__profileInfo {
+      flex: 1;
+      padding: 10px;
+    }
+    .sidebar__profileIcons {
+      display: flex;
+      flex-direction: column;
+      .MuiSvgIcon-root {
+        padding: 10px;
+      }
+    }
+  }
+}
