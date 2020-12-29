@@ -1,4 +1,7 @@
-import React from 'react';
+import React, {
+  useState,
+  useEffect
+} from 'react';
 import './Sidebar.scss';
 
 import SidebarChannel from './SidebarChannel';
@@ -17,9 +20,29 @@ function Sidebar() {
   const user = useSelector(selectUser);
   const [channels, setChannels] = useState([]);
 
+  // Get the channels from the firebase db
   useEffect(() => {
-    // db.collection
+    db.collection("channels").onSnapshot((snapshot) =>
+      setChannels(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          channel: doc.data(),
+        }))
+      )
+    );
   }, []);
+
+  // Handle Add more channels
+  const handleAddChannel = () => {
+    const channelName = prompt('Enter a new channel name');
+
+    if (channelName) {
+      console.log(channelName)
+      db.collection("channels").add({
+        channelName: channelName,
+      });
+    }
+  };
 
 
   return (
@@ -35,14 +58,17 @@ function Sidebar() {
             <ExpandMoreIcon />
             <h4>Text Channels</h4>
 
-            <AddIcon className='sidebar__addChannelBtn' />
+            <AddIcon
+              onClick={handleAddChannel}
+              className='sidebar__addChannelBtn'
+            />
           </div>
         </div>
 
         <div className="sidebar__channels__list">
-          <SidebarChannel />
-          <SidebarChannel />
-          <SidebarChannel />
+          {channels.map(({ id, channel }) => (
+            <SidebarChannel key={id} channelName={channel.channelName} />
+          ))}
         </div>
       </div>
 
