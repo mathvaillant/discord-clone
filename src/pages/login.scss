@@ -5,7 +5,8 @@ $fontColor: #eff2f5;
   display: grid;
   place-items: center;
   height: 100vh;
-  width: 100%;
+  width: 95%;
+  padding: 1rem;
   button {
     width: 300px;
     background-color: $colorDefault;
@@ -19,7 +20,7 @@ $fontColor: #eff2f5;
   .login__logo {
     img {
       object-fit: contain;
-      height: 150px;
+      height: 100px;
     }
   }
 }

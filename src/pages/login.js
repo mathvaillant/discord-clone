@@ -4,20 +4,21 @@ import './login.scss';
 
 import { auth, provider } from '../firebase';
 
+
+// Sign in using Firebase Auth
 function login() {
   const signIn = () => {
-    // do clever google login shit
 
     auth.signInWithPopup(provider)
-    .catch((error) => alert(error.message));
+      .catch((error) => alert(error.message));
   }
 
   return (
     <div className='login'>
-      
+
       <div className="login__logo">
-        <img 
-          src="https://upload.wikimedia.org/wikipedia/pt/b/b7/Discord_logo_svg.svg" 
+        <img
+          src="https://upload.wikimedia.org/wikipedia/pt/b/b7/Discord_logo_svg.svg"
           alt=""
         />
       </div>
